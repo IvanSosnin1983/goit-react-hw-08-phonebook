@@ -30,6 +30,7 @@ const contactSlice = createSlice({
     builder
       .addCase(fetchContacts.pending, pending)
       .addCase(fetchContacts.fulfilled, (state, { payload }) => {
+        console.log(state.contacts.items);
         state.contacts.isLoading = false;
         state.contacts.items = payload;
       })
@@ -37,7 +38,7 @@ const contactSlice = createSlice({
       .addCase(addContact.pending, pending)
       .addCase(addContact.fulfilled, (state, { payload }) => {
         state.contacts.isLoading = false;
-        state.contacts.items.unshift(payload);
+        state.contacts.items.push(payload);
       })
       .addCase(addContact.rejected, rejected)
       .addCase(deleteContact.pending, pending)

@@ -34,6 +34,7 @@ export const currentRequest = async token => {
   setToken(token);
   try {
     const { data } = await authInstance.get('/users/current');
+    console.log(data);
     return data;
   } catch (error) {
     setToken();

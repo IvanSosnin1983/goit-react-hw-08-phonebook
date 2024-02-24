@@ -1,28 +1,32 @@
 import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-import { Filter } from './Filter/Filter';
-import { Form } from './Form/Form';
-import { ContactList } from './ContactsList/ContactsList';
+// import { Filter } from './Filter/Filter';
+// import { Form } from './Form/Form';
+// import { ContactList } from './ContactsList/ContactsList';
 
-import { setFilter } from '../redux/contacts/slice';
-import {
-  selectFilter,
-  selectFilteredContacts,
-  selectIsLoading,
-  selectError,
-} from '../redux/contacts/selectors';
-import {
-  fetchContacts,
-  addContact,
-  deleteContact,
-} from '../redux/contacts/operations';
+// import { setFilter } from '../redux/contacts/slice';
+// import {
+//   selectFilter,
+//   selectFilteredContacts,
+//   selectIsLoading,
+//   selectError,
+// } from '../redux/contacts/selectors';
+// import {
+//   fetchContacts,
+//   addContact,
+//   deleteContact,
+// } from '../redux/contacts/operations';
 import { Route, Routes } from 'react-router-dom';
 import SharedLayout from './SharedLayout/SharedLayout';
 import HomePage from 'pages/HomePage/HomePage';
 import { LoginPage } from 'pages/LoginPage/LoginPage';
 import RegisterPage from 'pages/RegisterPage/RegisterPage';
 import ContactsPage from 'pages/ContactsPage/ContactsPage';
+import { PrivateRoute } from './PrivatRoute/PrivatRoute';
+import { PublicRoute } from './PublicRoute/PublicRoute';
+import { current } from '../redux/auth/authOperations';
+import { NotFoundPage } from '../pages/NotFoundPage/NotFoundPage';
 
 export const App = () => {
   // const filteredContacs = useSelector(selectFilteredContacts);
@@ -32,7 +36,7 @@ export const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(current());
   }, [dispatch]);
 
   // const onDeleteContact = deleteId => {
@@ -51,9 +55,14 @@ export const App = () => {
     <Routes>
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<HomePage />} />
-        <Route path="login" element={<LoginPage />} />
-        <Route path="register" element={<RegisterPage />} />
-        <Route path="contacts" element={<ContactsPage />} />
+        <Route element={<PublicRoute />}>
+          <Route path="login" element={<LoginPage />} />
+          <Route path="register" element={<RegisterPage />} />
+        </Route>
+        <Route element={<PrivateRoute />}>
+          <Route path="contacts" element={<ContactsPage />} />
+        </Route>
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
       {/* <h1>Phonebook</h1>
       <Form onSubmit={onAddContact} />

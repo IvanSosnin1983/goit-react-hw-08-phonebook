@@ -26,7 +26,7 @@ export const addContact = createAsyncThunk(
   {
     condition: (body, thunkApi) => {
       const { contacts } = thunkApi.getState();
-      const checkName = contacts.items.find(
+      const checkName = contacts.contacts.items.find(
         contact => contact.name.toLowerCase() === body.name.toLowerCase()
       );
       if (checkName) {
