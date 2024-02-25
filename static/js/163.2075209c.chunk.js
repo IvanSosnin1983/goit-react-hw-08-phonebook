@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkreact_homework_template=self.webpackChunkreact_homework_template||[]).push([[163],{4883:function(e,t,a){a.r(t),a.d(t,{default:function(){return r}});var c=a.p+"static/media/bg_home1.1d8f7a6a9c394d64db4f.jpeg",s="HomePage_title__UFLA3",n="HomePage_img__iGDv0",o=a(184),r=function(){return(0,o.jsxs)(o.Fragment,{children:[(0,o.jsx)("h1",{className:s,children:"Nice to see you in Contacts page!"}),(0,o.jsx)("img",{src:c,alt:"phonebook",className:n})]})}}}]);
+//# sourceMappingURL=163.2075209c.chunk.js.map
