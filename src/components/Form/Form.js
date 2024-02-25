@@ -32,6 +32,7 @@ export const Form = ({ onSubmit }) => {
 
   return (
     <form onSubmit={handleSubmit} className={css.form}>
+      <h2>Add contact</h2>
       <label className={css.label}>
         Name
         <input

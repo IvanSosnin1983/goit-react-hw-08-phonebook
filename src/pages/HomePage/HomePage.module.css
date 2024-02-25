@@ -1,0 +1,11 @@
+.title {
+  margin-top: 200px;
+  margin-bottom: 20px;
+  align-content: center;
+  display: flex;
+  justify-content: center;
+}
+.img {
+  display: block;
+  width: 100%;
+}

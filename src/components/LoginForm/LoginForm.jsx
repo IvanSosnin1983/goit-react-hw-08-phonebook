@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { selectIsLoading, selectError } from '../../redux/auth/authSelectors';
+import { selectError } from '../../redux/auth/authSelectors';
+import css from './LoginForm.module.css';
 
 export const LoginForm = ({ onSubmit }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
 
   const handleInputChange = e => {
@@ -36,17 +36,11 @@ export const LoginForm = ({ onSubmit }) => {
 
   return (
     <>
-      {isLoading && <p>. . . Loading</p>}
-      <form
-        onSubmit={handleSubmit}
-        //  className={css.form}
-      >
-        <label
-        //   className={css.label}
-        >
+      <form onSubmit={handleSubmit} className={css.form}>
+        <label className={css.label}>
           Email:
           <input
-            //   className={css.input}
+            className={css.input}
             type="email"
             name="email"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
@@ -56,13 +50,10 @@ export const LoginForm = ({ onSubmit }) => {
             placeholder="Enter email"
           />
         </label>
-        <label
-
-        //   className={css.label}
-        >
+        <label className={css.label}>
           Password:
           <input
-            //   className={css.input}
+            className={css.input}
             type="password"
             name="password"
             // pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -73,10 +64,7 @@ export const LoginForm = ({ onSubmit }) => {
             placeholder="Enter password"
           />
         </label>
-        <button
-          type="submit"
-          //   className={css.button}
-        >
+        <button type="submit" className={css.button}>
           Login
         </button>
       </form>

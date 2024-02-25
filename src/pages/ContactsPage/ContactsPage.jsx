@@ -1,33 +1,28 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
 import { Filter } from '../../components/Filter/Filter';
 import { Form } from '../../components/Form/Form';
 import { ContactList } from '../../components/ContactsList/ContactsList';
-
 import { setFilter } from '../../redux/contacts/slice';
 import {
   selectFilter,
   selectFilteredContacts,
   selectIsLoading,
   selectError,
-  selectAllContacts,
 } from '../../redux/contacts/selectors';
 import {
   fetchContacts,
   addContact,
   deleteContact,
 } from '../../redux/contacts/operations';
+import css from './ContactsPage.module.css';
 
 const ContactsPage = () => {
-  const allContacts = useSelector(selectAllContacts);
   const filteredContacs = useSelector(selectFilteredContacts);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const filter = useSelector(selectFilter);
   const dispatch = useDispatch();
-
-  console.log(allContacts);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -46,16 +41,17 @@ const ContactsPage = () => {
   };
 
   return (
-    <div>
-      <h1>Phonebook</h1>
+    <div className={css.wrap}>
       <Form onSubmit={onAddContact} />
-      <h2>Contacts</h2>
-      <Filter value={filter} onChange={filterChange} />
-      {isLoading && <p>. . . Loading</p>}
-      {error && <p>{error}</p>}
-      {Boolean(filteredContacs.length) && (
-        <ContactList contacts={filteredContacs} onDelete={onDeleteContact} />
-      )}
+      <div className={css.contacts}>
+        <h2>Contacts</h2>
+        <Filter value={filter} onChange={filterChange} />
+        {isLoading && <p>. . . Loading</p>}
+        {error && <p>{error}</p>}
+        {Boolean(filteredContacs.length) && (
+          <ContactList contacts={filteredContacs} onDelete={onDeleteContact} />
+        )}
+      </div>
     </div>
   );
 };

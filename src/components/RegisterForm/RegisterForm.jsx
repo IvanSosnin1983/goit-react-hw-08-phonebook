@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectIsLoading, selectError } from '../../redux/auth/authSelectors';
+import css from './RegisterForm.module.css';
 
 export const RegisterForm = ({ onSubmit }) => {
   const [name, setName] = useState('');
@@ -43,16 +44,11 @@ export const RegisterForm = ({ onSubmit }) => {
     <>
       {isLoading && <p>. . . Loading</p>}
 
-      <form
-        onSubmit={handleSubmit}
-        //  className={css.form}
-      >
-        <label
-        //   className={css.label}
-        >
+      <form onSubmit={handleSubmit} className={css.form}>
+        <label className={css.label}>
           Name:
           <input
-            //   className={css.input}
+            className={css.input}
             type="text"
             name="name"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
@@ -62,12 +58,10 @@ export const RegisterForm = ({ onSubmit }) => {
             placeholder="Enter name"
           />
         </label>
-        <label
-        //   className={css.label}
-        >
+        <label className={css.label}>
           Email:
           <input
-            //   className={css.input}
+            className={css.input}
             type="email"
             name="email"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
@@ -77,13 +71,10 @@ export const RegisterForm = ({ onSubmit }) => {
             placeholder="Enter email"
           />
         </label>
-        <label
-
-        //   className={css.label}
-        >
+        <label className={css.label}>
           Password:
           <input
-            //   className={css.input}
+            className={css.input}
             type="password"
             name="password"
             // pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -94,10 +85,7 @@ export const RegisterForm = ({ onSubmit }) => {
             placeholder="Enter password"
           />
         </label>
-        <button
-          type="submit"
-          //   className={css.button}
-        >
+        <button type="submit" className={css.button}>
           Register
         </button>
       </form>

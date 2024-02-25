@@ -12,7 +12,6 @@ const setToken = token => {
 };
 
 export const signupRequest = async body => {
-  console.log(body);
   const { data } = await authInstance.post('/users/signup', body);
   setToken(data.token);
   return data;
@@ -34,7 +33,6 @@ export const currentRequest = async token => {
   setToken(token);
   try {
     const { data } = await authInstance.get('/users/current');
-    console.log(data);
     return data;
   } catch (error) {
     setToken();

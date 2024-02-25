@@ -1,16 +1,19 @@
-.item {
+.label {
   display: block;
-  margin: 0;
-  width: 420px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  margin-bottom: 6px;
 }
-.text {
-  font-size: 20px;
-  margin-top: 8px;
-  margin-bottom: 8px;
-  padding: 0;
+.input {
+  margin-top: 3px;
+  display: block;
+  font-size: 15px;
+}
+
+.form {
+  padding: 10px;
+  border: 1px solid black;
+  width: 300px;
+  border-radius: 6px;
+  margin: 20px;
 }
 .button {
   min-width: 100px;

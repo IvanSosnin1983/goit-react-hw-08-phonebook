@@ -30,7 +30,6 @@ const contactSlice = createSlice({
     builder
       .addCase(fetchContacts.pending, pending)
       .addCase(fetchContacts.fulfilled, (state, { payload }) => {
-        console.log(state.contacts.items);
         state.contacts.isLoading = false;
         state.contacts.items = payload;
       })
